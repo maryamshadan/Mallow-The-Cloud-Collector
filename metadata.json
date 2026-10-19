@@ -1,0 +1,6 @@
+{
+  "name": "Mallow — The Cloud Collector",
+  "description": "A whimsical sky-world portfolio and interactive dream showcase for Mallow the baby cloud collector.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

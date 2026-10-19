@@ -1,0 +1,520 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --sky-gradient-start: #dbeafe;
+    --sky-gradient-mid: #f3e8ff;
+    --sky-gradient-end: #ffedd5;
+    --text-primary: #334155;
+    --text-secondary: #64748b;
+    --card-bg: rgba(255, 255, 255, 0.82);
+    --card-border: rgba(255, 255, 255, 0.95);
+    --accent-cloud: #f8fafc;
+    --accent-star: #fef08a;
+    --accent-pink: #fbcfe8;
+    --accent-lavender: #e9d5ff;
+    --accent-blue: #bae6fd;
+    --mallow-glow: rgba(253, 224, 71, 0.4);
+    --badge-bg: rgba(255, 255, 255, 0.92);
+    --nav-bg: rgba(255, 255, 255, 0.85);
+  }
+
+  html.sunset-theme {
+    --sky-gradient-start: #fed7aa;
+    --sky-gradient-mid: #fbcfe8;
+    --sky-gradient-end: #c4b5fd;
+    --text-primary: #3b0764;
+    --text-secondary: #6b21a8;
+    --card-bg: rgba(255, 245, 240, 0.85);
+    --card-border: rgba(253, 230, 138, 0.6);
+    --accent-cloud: #fffbeb;
+    --accent-star: #f59e0b;
+    --accent-pink: #f43f5e;
+    --accent-lavender: #a855f7;
+    --accent-blue: #fdba74;
+    --mallow-glow: rgba(251, 146, 60, 0.45);
+    --badge-bg: rgba(255, 237, 213, 0.9);
+    --nav-bg: rgba(254, 215, 170, 0.85);
+  }
+
+  html.night-theme {
+    --sky-gradient-start: #080b1a;
+    --sky-gradient-mid: #141035;
+    --sky-gradient-end: #270d35;
+    --text-primary: #ffffff;
+    --text-secondary: #e2e8f0;
+    --card-bg: rgba(22, 18, 56, 0.92);
+    --card-border: rgba(192, 132, 252, 0.5);
+    --accent-cloud: #f8fafc;
+    --accent-star: #fde047;
+    --accent-pink: #f472b6;
+    --accent-lavender: #c084fc;
+    --accent-blue: #38bdf8;
+    --mallow-glow: rgba(192, 132, 252, 0.55);
+    --badge-bg: rgba(30, 27, 75, 0.9);
+    --nav-bg: rgba(8, 11, 26, 0.94);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text-primary);
+    background: linear-gradient(180deg, var(--sky-gradient-start) 0%, var(--sky-gradient-mid) 50%, var(--sky-gradient-end) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background 1.2s ease, color 0.6s ease;
+  }
+}
+
+/* Glassmorphism Card Utilities */
+.sky-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid var(--card-border);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.07), 0 0 20px rgba(255, 255, 255, 0.6) inset;
+}
+
+.sky-card:hover {
+  box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.1), 0 0 24px rgba(255, 255, 255, 0.8) inset;
+}
+
+/* Tactile Bouncy Preschool Playground Button */
+.toy-button {
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+.toy-button:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+.toy-button:active {
+  transform: translateY(1px) scale(0.96);
+}
+
+/* Custom Keyframe Animations */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(1.8deg);
+  }
+}
+
+@keyframes floatBobbing {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+@keyframes cloudDriftLayer1 {
+  0% {
+    transform: translateX(-40px) translateY(0);
+  }
+  50% {
+    transform: translateX(180px) translateY(-14px);
+  }
+  100% {
+    transform: translateX(-40px) translateY(0);
+  }
+}
+
+@keyframes cloudDriftLayer2 {
+  0% {
+    transform: translateX(140px) translateY(0);
+  }
+  50% {
+    transform: translateX(-160px) translateY(18px);
+  }
+  100% {
+    transform: translateX(140px) translateY(0);
+  }
+}
+
+@keyframes cloudDriftLayer3 {
+  0% {
+    transform: translateX(-180px) translateY(0);
+  }
+  50% {
+    transform: translateX(140px) translateY(-12px);
+  }
+  100% {
+    transform: translateX(-180px) translateY(0);
+  }
+}
+
+/* Midnight Text Visibility Safeguards */
+html.night-theme .text-slate-800,
+html.night-theme .text-slate-700,
+html.night-theme .text-slate-600 {
+  color: #f8fafc !important;
+}
+
+html.night-theme .text-slate-500,
+html.night-theme .text-slate-400 {
+  color: #cbd5e1 !important;
+}
+
+html.night-theme .text-purple-950,
+html.night-theme .text-purple-900 {
+  color: #f3e8ff !important;
+}
+
+html.night-theme .text-pink-950,
+html.night-theme .text-pink-900 {
+  color: #fce7f3 !important;
+}
+
+html.night-theme .text-sky-950,
+html.night-theme .text-sky-900 {
+  color: #e0f2fe !important;
+}
+
+html.night-theme .text-amber-950,
+html.night-theme .text-amber-900 {
+  color: #fef3c7 !important;
+}
+
+html.night-theme .text-emerald-950,
+html.night-theme .text-emerald-800 {
+  color: #d1fae5 !important;
+}
+
+@keyframes twinkleStar {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+@keyframes shootingStarStreak {
+  0% {
+    transform: translateX(0) translateY(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-40px) translateY(30px) scale(1);
+  }
+  40% {
+    opacity: 0.9;
+    transform: translateX(-240px) translateY(180px) scale(1);
+  }
+  60%, 100% {
+    opacity: 0;
+    transform: translateX(-350px) translateY(260px) scale(0.2);
+  }
+}
+
+@keyframes stardustFloat {
+  0%, 100% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-18px) scale(1.1);
+    opacity: 0.85;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px var(--mallow-glow));
+  }
+  50% {
+    filter: drop-shadow(0 0 24px var(--mallow-glow));
+  }
+}
+
+@keyframes rainbowGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes rainFall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes portalSwirl {
+  0% {
+    transform: rotate(0deg) scale(0.95);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.95);
+  }
+}
+
+/* Pillow Squash & Stretch Animation */
+@keyframes pillowSquashStretch {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  20% {
+    transform: scale(1.35, 0.65) translateY(10px);
+  }
+  45% {
+    transform: scale(0.82, 1.28) translateY(-18px);
+  }
+  70% {
+    transform: scale(1.12, 0.9) translateY(4px);
+  }
+  85% {
+    transform: scale(0.96, 1.04) translateY(-2px);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+/* Unique Essence Animations for Dynamic Preview */
+@keyframes essenceStrawberryHop {
+  0% {
+    transform: scale(1) translateY(0) rotate(0deg);
+  }
+  30% {
+    transform: scale(1.12) translateY(-12px) rotate(-6deg);
+  }
+  60% {
+    transform: scale(1.06) translateY(-4px) rotate(6deg);
+  }
+  100% {
+    transform: scale(1) translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes essenceCocoaWobble {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(4deg);
+  }
+  75% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes essenceBookFlutter {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  40% {
+    transform: scale(1.08) translateY(-14px) rotate(2deg);
+  }
+  70% {
+    transform: scale(1.02) translateY(-6px) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes essenceFireflyPulse {
+  0% {
+    transform: scale(0.96);
+    filter: drop-shadow(0 0 4px rgba(52, 211, 153, 0.4));
+  }
+  50% {
+    transform: scale(1.12) translateY(-10px);
+    filter: drop-shadow(0 0 20px rgba(52, 211, 153, 0.9));
+  }
+  100% {
+    transform: scale(0.96);
+    filter: drop-shadow(0 0 4px rgba(52, 211, 153, 0.4));
+  }
+}
+
+@keyframes essenceBlanketWarmth {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.18, 0.88) translateY(6px);
+  }
+  70% {
+    transform: scale(0.92, 1.12) translateY(-10px);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes essenceStarShimmer {
+  0% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.6));
+  }
+  50% {
+    transform: scale(1.15) rotate(180deg);
+    filter: drop-shadow(0 0 22px rgba(250, 204, 21, 1));
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.6));
+  }
+}
+
+@keyframes essenceTeaSerenity {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Utility Animation Classes */
+.animate-float-gentle {
+  animation: floatGentle 5.5s ease-in-out infinite;
+}
+
+.animate-float-bob {
+  animation: floatBobbing 3.5s ease-in-out infinite;
+}
+
+.animate-drift-layer-1 {
+  animation: cloudDriftLayer1 36s ease-in-out infinite;
+}
+
+.animate-drift-layer-2 {
+  animation: cloudDriftLayer2 48s ease-in-out infinite;
+}
+
+.animate-drift-layer-3 {
+  animation: cloudDriftLayer3 60s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkleStar 3.2s ease-in-out infinite;
+}
+
+.animate-shooting-star {
+  animation: shootingStarStreak 12s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+}
+
+.animate-stardust {
+  animation: stardustFloat 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-portal {
+  animation: portalSwirl 16s linear infinite;
+}
+
+.animate-pillow-squash {
+  animation: pillowSquashStretch 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-essence-strawberry {
+  animation: essenceStrawberryHop 0.75s ease-in-out;
+}
+
+.animate-essence-cocoa {
+  animation: essenceCocoaWobble 0.75s ease-in-out;
+}
+
+.animate-essence-book {
+  animation: essenceBookFlutter 0.75s ease-in-out;
+}
+
+.animate-essence-firefly {
+  animation: essenceFireflyPulse 0.85s ease-in-out;
+}
+
+.animate-essence-blanket {
+  animation: essenceBlanketWarmth 0.75s ease-in-out;
+}
+
+.animate-essence-star {
+  animation: essenceStarShimmer 0.85s ease-in-out;
+}
+
+.animate-essence-tea {
+  animation: essenceTeaSerenity 0.75s ease-in-out;
+}
+
+.rainbow-gradient {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 20%, #a1c4fd 40%, #c2e9fb 60%, #fdcbf1 80%, #e0c3fc 100%);
+  background-size: 300% 300%;
+  animation: rainbowGlow 8s ease infinite;
+}
+
+/* Rain Overlays */
+.rain-stream {
+  position: absolute;
+  top: 0;
+  width: 1.5px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(186, 230, 253, 0.75) 60%, rgba(255, 255, 255, 0.95) 100%);
+  pointer-events: none;
+  animation: rainFall 0.85s linear infinite;
+}
+
+/* Smooth Scrolling & Sliders */
+html {
+  scroll-behavior: smooth;
+}
+
+input[type="range"] {
+  accent-color: #a855f7;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-gentle,
+  .animate-float-bob,
+  .animate-drift-layer-1,
+  .animate-drift-layer-2,
+  .animate-drift-layer-3,
+  .animate-twinkle,
+  .animate-shooting-star,
+  .animate-stardust,
+  .animate-pulse-glow,
+  .animate-portal,
+  .rain-stream {
+    animation: none !important;
+  }
+}
